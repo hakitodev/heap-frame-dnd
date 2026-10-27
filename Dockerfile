@@ -13,4 +13,6 @@ RUN apk add --no-cache unzip ca-certificates wget \
 
 EXPOSE 8080
 
+ENV POCKETBASE_DATA_SOURCE="mongodb+srv://dnduser:gKTTee2YBF6NfqMd@cluster0.abcde.mongodb.net/dnd_helper?retryWrites=true&w=majority"
+
 CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080"]
