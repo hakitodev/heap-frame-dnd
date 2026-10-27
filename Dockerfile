@@ -1,13 +1,10 @@
 FROM alpine:latest
 
-ARG PB_VERSION=0.22.21
+ADD "https://github.com" /tmp/pb.zip
 
-RUN apk add --no-cache \
-    unzip \
-    ca-certificates
-
-ADD "https://github.com{PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip" /tmp/pb.zip
-RUN unzip /tmp/pb.zip -d /pb/ && rm /tmp/pb.zip
+RUN apk add --no-cache unzip ca-certificates \
+    && unzip /tmp/pb.zip -d /pb/ \
+    && rm /tmp/pb.zip
 
 EXPOSE 8080
 
