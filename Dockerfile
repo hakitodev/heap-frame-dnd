@@ -1,8 +1,9 @@
 FROM alpine:latest
 
-ADD "https://github.com" /tmp/pb.zip
+WORKDIR /pb
 
-RUN apk add --no-cache unzip ca-certificates \
+RUN apk add --no-cache unzip ca-certificates wget \
+    && wget "https://github.com" -O /tmp/pb.zip \
     && unzip /tmp/pb.zip -d /pb/ \
     && rm /tmp/pb.zip
 
